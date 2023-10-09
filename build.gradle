@@ -23,6 +23,10 @@ dependencies {
     // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
 
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.14.0'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
+    implementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.14.0'
+
 
 
 
