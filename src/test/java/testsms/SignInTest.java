@@ -1,5 +1,6 @@
 package testsms;
 
+import Page.HomeBasePage;
 import Page.SingInPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,9 +32,11 @@ public class SignInTest extends TestBase {
 
         // Crear pagina interna
         // var inicioPage = new ParentInterPage(getDriver());
+        HomeBasePage homeBasePage = new HomeBasePage(getDriver());
+        assertTrue(homeBasePage.isHomePageDisplayed(), "No inició sesión correctamente");
         // Pedir a la pagina interna el texto del boton de salida o que exista
 
-        Thread.sleep(2000);
+
 
     }
 

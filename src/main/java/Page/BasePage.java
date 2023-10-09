@@ -15,7 +15,7 @@ import java.util.List;
 // al navegador y se realiza el envoltorio (Wrajpper) donde estarán los comandos de Selenium
 public class BasePage {
 // Se crea la variable de tipo webdriver
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public WebDriverWait getEwait() {
         return ewait;
@@ -30,28 +30,24 @@ public class BasePage {
         ewait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-
     // Este método crea el envoltorio Wrapper para los comandos de Selenium WebDriver
-
     public WebElement findElement(By locator){
+
         return driver.findElement(locator);
     }
-    // este metodo nos devuelve una lista de elementos
-
+    // Este método devuelve una lista de elementos
     public List<WebElement> findElements(By locator){
-
         return driver.findElements(locator);
     }
-    // Este metodo devulve el texto del elemento que se pasa por parametro
+    // Este método devuelve el texto del elemento que se pasa por parámetro
     public String getText(WebElement element){
         return  element.getText();
     }
-
-    //Este metodo nos devuelve el texto del elemento que estamos buscando por medio del locator
+    //Este método nos devuelve el texto del elemento que estamos buscando por medio del locator
     public  String getText(By locator){
         return  driver.findElement(locator).getText();
     }
-    // Este metodo nos permite escribir texto en la prueba con el comando sendkeys o type(teclear)
+    // Este método nos permite escribir texto en la prueba con el comando sendkeys o type(teclear)
     public void type(String inputText,By locator){
         //Localiza el elemento y limpia lo que halla en èl
         driver.findElement(locator).clear();
@@ -63,9 +59,8 @@ public class BasePage {
         driver.findElement(locator).click();
 
     }
-    // Este metodo nos dice si el elemento esta listo para ser utilizado, en caso que no
+    // Este metodo nos dice si el elemento está listo para ser utilizado, en caso que no
     // exista devuelve una excepción si el elemento no existe, no ha cargado o fue modificado
-
     public Boolean isDisplayed(By locator){
         try{
 
@@ -74,7 +69,4 @@ public class BasePage {
             return  false;
         }
     }
-
-
-
 }

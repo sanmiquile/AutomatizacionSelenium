@@ -13,7 +13,8 @@ public class RegisterPage extends SingInPage{
     By usernameLocator = By.id("registro:nombreUsuario");
     By passwordLocator = By.id("registro:clave");
     By confirmPasswordLocator = By.name("registro:verificacionClave");
-    By acceptBtnLocator = By.name("registro:j_idt88");
+    By acceptBtnLocator = By.xpath("//span[text()='Aceptar']");
+
     By messageRegister = By.xpath("//div[@class='ui-growl-message']/span[@class='ui-growl-title']");
 
 
@@ -35,6 +36,6 @@ public class RegisterPage extends SingInPage{
     getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(messageRegister));
          // Se manda el elemento para obtener el texto
         return getText(messageRegister);
-       // return elemento -> GetMessage;
+
     }
 }

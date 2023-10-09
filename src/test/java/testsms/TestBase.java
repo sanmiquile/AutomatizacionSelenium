@@ -15,7 +15,6 @@ public class TestBase {
     //Inicio Sesiòn
     public String name = "sami";
     public String password = "1234";
-    // Datos registro
 
 
     // Datos configura proyecto

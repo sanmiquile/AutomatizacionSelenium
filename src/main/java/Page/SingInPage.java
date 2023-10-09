@@ -7,7 +7,7 @@ public class SingInPage extends BasePage {
 
     By userLocator = By.name("nombreUsuario");
     By passLocator = By.id("clave");
-    By signInBtnLocator = By.name("j_idt74");
+    By signInBtnLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Ingresar']");
 
     public SingInPage(WebDriver driver) {
         super(driver);
@@ -17,9 +17,7 @@ public class SingInPage extends BasePage {
         type(name, userLocator);
         type(password, passLocator);
         click(signInBtnLocator);
+
     }
 
-    public boolean isHomePageDisplayed() {
-        return true;
-    }
 }
