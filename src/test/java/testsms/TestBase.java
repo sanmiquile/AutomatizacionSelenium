@@ -17,13 +17,6 @@ public class TestBase {
     public String password = "1234";
 
 
-    // Datos configura proyecto
-
-    public String nameProject = "Proyecto1";
-    public String descProject = "Proyecto de prueba";
-
-    // Datos Objetivo Proyecto
-
     private WebDriver driver;
     public WebDriver getDriver() {
         return driver;

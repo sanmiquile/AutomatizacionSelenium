@@ -10,18 +10,16 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ConfigurarSMSTest extends TestBase {
+public class ConfigurarSMSTest extends TestHomeBase {
 
-    SingInPage singInPage;
+
     ConfigurarSMSPage configurarSMSPage;
 
     // Se ejecuta antes de cada prueba, para instanciar la clase de configurar SMS
     @BeforeEach
     public void setUp() throws InterruptedException {
         //Se llama el mètodo SetUpDriver que está en la clase padre testbase
-        setUpDriver();
-        singInPage = new SingInPage(getDriver());
-        singInPage.sigIn(name, password);
+        login();
         configurarSMSPage = new ConfigurarSMSPage(getDriver());
         assertTrue(configurarSMSPage.isHomePageDisplayed(), "No inició sesión correctamente");
         if(!configurarSMSPage.getTitleApp().contains("Configurar SMS")) {
