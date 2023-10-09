@@ -34,8 +34,7 @@ public class TestBase {
 
 
     // Se crea el mètodo para la conexiòn con el navegador
-    private WebDriver chromeDriverConnection(){
-
+        private WebDriver chromeDriverConnection(){
         WebDriverManager.chromedriver().setup(); // Se le está diciendo que vamos a trabajar con el Navegador Chrome
         //vamos a crear el Driver de tipo webdriver, instancia del Driver
         driver = new ChromeDriver(); // Indica que abra el navegador y lo inicializa

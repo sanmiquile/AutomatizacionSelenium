@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConfigurarSMSTest extends TestHomeBase {
 
-
     ConfigurarSMSPage configurarSMSPage;
 
     // Se ejecuta antes de cada prueba, para instanciar la clase de configurar SMS

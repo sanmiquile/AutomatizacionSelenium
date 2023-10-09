@@ -5,16 +5,16 @@ import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
 public class TestHomeBase extends TestBase{
-
-    // Datos configura proyecto
     Faker faker= new Faker();
-   // public String nameProject = "Proyecto1";
+    // Datos configura proyecto
     public String nameProject = faker.app().name();
-    //public String descProject = "Proyecto de prueba";
-    // Genera una descripción corta de proyecto
     public String descProject = faker.lorem().sentence();
 
     // Datos Objetivo Proyecto
+
+    public String objectiveCode = faker.code().asin();
+    public String objectiveDescription = faker.lorem().sentence();
+
     SingInPage singInPage;
 
     public void login (){
