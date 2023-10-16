@@ -14,7 +14,6 @@ public class RegisterPage extends SingInPage{
     By passwordLocator = By.id("registro:clave");
     By confirmPasswordLocator = By.name("registro:verificacionClave");
     By acceptBtnLocator = By.xpath("//span[text()='Aceptar']");
-
     By messageRegister = By.xpath("//div[@class='ui-growl-message']/span[@class='ui-growl-title']");
 
 
@@ -22,14 +21,12 @@ public class RegisterPage extends SingInPage{
         super(driver);
     }
 
-    public void registerUser(String nameAll, String username, String password, String confirmPass ) throws InterruptedException {
-    click(registerBtnLocator);
+    public void registerUser(String nameAll, String username, String password, String confirmPass ) throws InterruptedException {click(registerBtnLocator);
     type(nameAll,userNameCompleteLocator);
     type(username, usernameLocator);
     type(password,passwordLocator);
     type(confirmPass, confirmPasswordLocator);
     click(acceptBtnLocator);
-
     }
      public String registerMessage(){
     // WaitforVisibleElement
