@@ -1,6 +1,7 @@
 package steps;
 
 import Page.HomeBasePage;
+import Page.RegisterPage;
 import Page.SingInPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -17,11 +18,11 @@ import java.time.Duration;
 public class StepsDefinitions {
 
     WebDriver driver = null;
-    String username = "sami";
-    String password = "1234";
 
     SingInPage singInPage;
-    @Given("estoy en la página de inicio de sesión del SMS Builder")
+    RegisterPage registerPage;
+
+  @Given("estoy en la página de inicio de sesión del SMS Builder")
     public void estoy_en_la_página_de_inicio_de_sesión_del_sms_builder() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -29,18 +30,27 @@ public class StepsDefinitions {
         driver.navigate().to("http://189.50.209.188");
 
     }
-    @When("mi nombre de usuario válido y mi contraseña válida")
-    public void mi_nombre_de_usuario_válido_y_mi_contraseña_válida() {
-        singInPage= new SingInPage(driver);
-        singInPage.sigIn(username, password);
+ /*
+    @When("presiono el botón de Registrar")
+    public void presiono_el_botón_de_registrar() {
+        registerPage.registrar();
     }
-    @And("hago clic en el botón Ingresar")
-    public void hago_clic_en_el_botón() {
-        singInPage.ingresar();
+    @When("ingresao datos válidos de nombre, usuario, contraseña y confirmación de contraseña")
+    public void ingresao_datos_válidos_de_nombre_usuario_contraseña_y_confirmación_de_contraseña() {
+        registerPage.registerUser("Luis Perez", "lucho", "1234", "1234");
     }
-    @Then("debería estar en el Home")
-    public void debería_estar_en_el_home() throws InterruptedException {
-        HomeBasePage homeBasePage = new HomeBasePage(driver);
-        assertTrue(homeBasePage.isHomePageDisplayed(), "No inició sesión correctamente");
+    @When("hago clic en el botón Aceptar")
+    public void hago_clic_en_el_botón_aceptar() {
+        registerPage.AceptBoton();
     }
+    @Then("muestra mensaje de operación completada")
+    public void muestra_mensaje_de_operación_completada() {
+        registerPage.registerMessage();
+    }
+
+*/
+
+
+
+
 }
