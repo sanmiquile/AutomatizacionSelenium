@@ -5,10 +5,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ActualizarObjetivoTest extends TestHomeBase{
+public class EliminarObjetivoTest extends TestHomeBase{
     ObjetivoPage objetivoPage;
 
 
@@ -28,13 +27,14 @@ public class ActualizarObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Treeflex";
-        String nuevoCod = "New";
-        String nuevaDesc = "Description";
-        objetivoPage.actualizarObjetivo(codigoObjetivo, nuevoCod, nuevaDesc);
+        String codigoObjetivo= "Prueba2";
+        objetivoPage.eliminarObjetivo(codigoObjetivo);
         String message = objetivoPage.registerMessage();
         assertEquals(  "Operación completada", message);
-        assertTrue(objetivoPage.buscarObjetivo(nuevoCod));
+        assertFalse(objetivoPage.buscarObjetivo(codigoObjetivo));
+     //
+
+
     }
 
 }
