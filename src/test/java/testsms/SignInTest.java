@@ -29,6 +29,7 @@ public class SignInTest extends TestBase {
     public void test() throws InterruptedException {
         SignInRecord signInRecord = new SignInRecord(name, password);
         singInPage.sigIn(signInRecord.name(), signInRecord.password());
+        //singInPage.sigIn(name, password);
         //para leer las variables de entorno que seteamos en el IDE
         //singInPage.sigIn(System.getenv("NAME"), System.getenv("PASSWORD"));
 

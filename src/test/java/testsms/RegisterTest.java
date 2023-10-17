@@ -32,6 +32,7 @@ public class RegisterTest extends TestBase{
         RegisterRecord registerRecord = new RegisterRecord(nameAll, username, passwordR);
         registerPage.registerUser(registerRecord.nameAll(), registerRecord.username(),
                 registerRecord.passwordR(), registerRecord.passwordR());
+        //registerPage.registerUser(nameAll, username, passwordR, passwordR);
         String message = registerPage.registerMessage();
         assertEquals(  "Operación completada", message);
 
