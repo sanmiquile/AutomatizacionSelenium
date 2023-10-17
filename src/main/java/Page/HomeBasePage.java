@@ -3,6 +3,7 @@ package Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,9 @@ public class HomeBasePage extends BasePage{
     }
 
 public String getTitleApp (){
+        // WaitforVisibleElement
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(titleAppLocator));
+        // Se manda el elemento para obtener el texto
         return getText(titleAppLocator);
 }
 
