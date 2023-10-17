@@ -28,7 +28,7 @@ public class ActualizarObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "wv3";
+        String codigoObjetivo= "B000AOVECO";
         String nuevoCod = "New";
         String nuevaDesc = "Description";
         objetivoPage.actualizarObjetivo(codigoObjetivo, nuevoCod, nuevaDesc);

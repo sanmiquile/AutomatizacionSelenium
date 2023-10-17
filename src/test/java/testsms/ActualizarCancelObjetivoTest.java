@@ -28,8 +28,8 @@ public class ActualizarCancelObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Treeflex";
-        String nuevoCod = "New";
+        String codigoObjetivo= "New";
+        String nuevoCod = "New2";
         String nuevaDesc = "Description";
         objetivoPage.actualizarCancelObjetivo(codigoObjetivo, nuevoCod, nuevaDesc);
         String message = objetivoPage.registerMessage();
