@@ -34,7 +34,7 @@ public class ObjetivoTest extends TestHomeBase{
 
     //Eliminar o editar
 
-    //tabla objetivos ui-datatable-data ui-widget-content
+
     // Editar <span class="ui-icon ui-icon-pencil"></span>
     // Eliminar ui-button-icon-left ui-icon ui-c pi pi-trash
     // Editar còdigo

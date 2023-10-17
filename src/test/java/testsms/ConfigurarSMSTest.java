@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConfigurarSMSTest extends TestHomeBase {
@@ -31,6 +32,7 @@ public class ConfigurarSMSTest extends TestHomeBase {
     @Test
     public void test() throws InterruptedException {
         configurarSMSPage.configurarsms(nameProject, descProject);
+        assertTrue(configurarSMSPage.getTitleApp().contains("Objetivo"));
     }
 }
 
