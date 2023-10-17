@@ -17,6 +17,7 @@ public class ConfigurarSMSPage extends HomeBasePage{
         type(nameProject,nameProjectLocator);
         type(descProject, descriptionConfLocator);
         click(configBtnLocator);
+
     }
 
 
