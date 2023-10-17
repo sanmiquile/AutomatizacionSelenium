@@ -3,9 +3,11 @@ package Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class HomeBasePage extends BasePage{
     //TODO localizar el boton de salida
@@ -28,24 +30,14 @@ public class HomeBasePage extends BasePage{
     }
 
     public boolean isHomePageDisplayed() throws InterruptedException{
-        boolean existe = false;
-        List <By>  elementos = new ArrayList<>();
-        elementos.add((goOutLocator));
-        elementos.add((menuLocator));
-        elementos.add((devolverLocator));
-        elementos.add((adelantarLocator));
-
-        for (By elemento: elementos) {
-            if(isDisplayed(elemento)) {
-                existe=true;
-                break;
-            }
-
-        }
-        return existe;
+        return Stream.of(goOutLocator,menuLocator,devolverLocator,adelantarLocator)
+                .anyMatch(this::isDisplayed);
     }
 
 public String getTitleApp (){
+        // WaitforVisibleElement
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(titleAppLocator));
+        // Se manda el elemento para obtener el texto
         return getText(titleAppLocator);
 }
 

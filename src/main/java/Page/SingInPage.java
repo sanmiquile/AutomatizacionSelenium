@@ -21,6 +21,7 @@ public class SingInPage extends BasePage {
         click(signInBtnLocator);
 
     }
+
     public String registerMessageSign(){
         // WaitforVisibleElement
         getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(message));
