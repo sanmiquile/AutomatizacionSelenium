@@ -1,6 +1,6 @@
 package testsms;
 
-import Page.ObjetivoPage;
+import page.ObjetivoPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ public class ActualizarObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Treeflex";
+        String codigoObjetivo= "wv3";
         String nuevoCod = "New";
         String nuevaDesc = "Description";
         objetivoPage.actualizarObjetivo(codigoObjetivo, nuevoCod, nuevaDesc);

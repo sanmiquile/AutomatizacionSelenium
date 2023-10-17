@@ -1,6 +1,6 @@
 package testsms;
 
-import Page.SingInPage;
+import page.SingInPage;
 import com.github.javafaker.Faker;
 
 public class TestHomeBase extends TestBase{

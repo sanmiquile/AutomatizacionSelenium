@@ -1,6 +1,6 @@
 package testsms;
 
-import Page.ObjetivoPage;
+import page.ObjetivoPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ public class EliminarObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Prueba2";
+        String codigoObjetivo= "New";
         objetivoPage.eliminarObjetivo(codigoObjetivo);
         String message = objetivoPage.registerMessage();
         assertEquals(  "Operación completada", message);

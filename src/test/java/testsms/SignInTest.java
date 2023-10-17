@@ -1,7 +1,9 @@
 package testsms;
 
-import Page.HomeBasePage;
-import Page.SingInPage;
+import dto.RegisterRecord;
+import dto.SignInRecord;
+import page.HomeBasePage;
+import page.SingInPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +27,8 @@ public class SignInTest extends TestBase {
 
     @Test
     public void test() throws InterruptedException {
-        singInPage.sigIn(name, password);
+        SignInRecord signInRecord = new SignInRecord(name, password);
+        singInPage.sigIn(signInRecord.name(), signInRecord.password());
         //para leer las variables de entorno que seteamos en el IDE
         //singInPage.sigIn(System.getenv("NAME"), System.getenv("PASSWORD"));
 

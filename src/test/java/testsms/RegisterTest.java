@@ -1,6 +1,7 @@
 package testsms;
 
-import Page.RegisterPage;
+import dto.RegisterRecord;
+import page.RegisterPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,8 +29,9 @@ public class RegisterTest extends TestBase{
         String nameAll = faker.name().fullName();
         String username = faker.name().username();
         String passwordR=faker.internet().password();
-
-        registerPage.registerUser(nameAll, username, passwordR, passwordR);
+        RegisterRecord registerRecord = new RegisterRecord(nameAll, username, passwordR);
+        registerPage.registerUser(registerRecord.nameAll(), registerRecord.username(),
+                registerRecord.passwordR(), registerRecord.passwordR());
         String message = registerPage.registerMessage();
         assertEquals(  "Operación completada", message);
 

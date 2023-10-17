@@ -1,6 +1,6 @@
 package testsms;
 
-import Page.SingInPage;
+import page.SingInPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

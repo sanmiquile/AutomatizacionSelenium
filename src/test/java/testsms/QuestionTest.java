@@ -1,6 +1,6 @@
 package testsms;
 
-import Page.QuestionPage;
+import page.QuestionPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
