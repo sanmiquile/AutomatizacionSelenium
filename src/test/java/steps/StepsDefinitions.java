@@ -1,12 +1,8 @@
 package steps;
 
-import Page.HomeBasePage;
-import Page.RegisterPage;
-import Page.SingInPage;
-import io.cucumber.java.en.And;
+import page.RegisterPage;
+import page.SingInPage;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
