@@ -117,6 +117,25 @@ public class ObjetivoPage extends HomeBasePage {
         getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(codObjectLocator));
         return isDisplayed(codObjectLocator);
         }
+    public String seleccionarObjetivoAleatorio() {
+        // Obtener la cantidad de filas en la tabla
+        List<WebElement> filas = findElements(By.cssSelector("#tabla\\:j_idt602_data tr"));
+        int numRows = filas.size();
+
+        if (numRows > 1) { // Asegurarse de que haya al menos una fila con datos
+            // Generar un índice aleatorio
+            int randomIndex = (int) (Math.random() * (numRows - 1)) + 1;
+
+            // Obtener el código y descripción del objetivo aleatorio
+            WebElement fila = filas.get(randomIndex);
+            List<WebElement> celdas = fila.findElements(By.tagName("td"));
+
+            return getText(celdas.get(0));
+
+        } return "";
+
+    }
+
 }
 
 
