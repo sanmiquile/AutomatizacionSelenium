@@ -1,6 +1,7 @@
 package steps;
 
 import com.github.javafaker.Faker;
+import injectionDependency.InjectionHome;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepObjective {
+
+    public StepObjective(InjectionHome injectionHome) {
+        this.injectionHome = injectionHome;
+    }
+
+    InjectionHome injectionHome;
     WebDriver driver = Hook.getDriver();
 
-   ObjetivoPage objetivoPage;
+   //ObjetivoPage objetivoPage;
     Faker faker= new Faker();
     String objectiveCode;
     String objectiveDescription ;
@@ -21,21 +28,21 @@ public class StepObjective {
     public void ingreso_los_datos_del_codigo_y_descripcion_y_creo_el_objetivo() throws InterruptedException {
         objectiveCode = faker.code().asin();
         objectiveDescription = faker.lorem().sentence();
-        objetivoPage = new ObjetivoPage(driver);
-        assertTrue(objetivoPage.isHomePageDisplayed(),"No inició sesión correctamente");
-        if(!objetivoPage.getTitleApp().contains("Objetivo")) {
-            objetivoPage.goStep("Objetivo");
+        injectionHome.objetivoPage = new ObjetivoPage(driver);
+        assertTrue(injectionHome.objetivoPage.isHomePageDisplayed(),"No inició sesión correctamente");
+        if(!injectionHome.objetivoPage.getTitleApp().contains("Objetivo")) {
+            injectionHome.objetivoPage.goStep("Objetivo");
 
         }
-        objetivoPage.objetivePage(objectiveCode, objectiveDescription);
+        injectionHome.objetivoPage.objetivePage(objectiveCode, objectiveDescription);
 }
 
     @Then("muestra mensaje de operación completada y objetivo en tabla")
     public void muestra_mensaje_de_operación_completada() {
-        String message = objetivoPage.registerMessage();
+        String message = injectionHome.objetivoPage.registerMessage();
         assertEquals(  "Operación completada", message);
-        assertTrue(objetivoPage.isDisplayeObjetivePage());
-        assertTrue(objetivoPage.buscarObjetivo(objectiveCode));
+        assertTrue(injectionHome.objetivoPage.isDisplayeObjetivePage());
+        assertTrue(injectionHome.objetivoPage.buscarObjetivo(objectiveCode));
     }
 
 
