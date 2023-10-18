@@ -2,6 +2,7 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ConfigurarSMSPage extends HomeBasePage{
     By nameProjectLocator = By.name("registro:nombre");
@@ -13,7 +14,7 @@ public class ConfigurarSMSPage extends HomeBasePage{
     }
 
     public void configurarsms(String nameProject, String descProject) throws InterruptedException {
-
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(nameProjectLocator));
         type(nameProject,nameProjectLocator);
         type(descProject, descriptionConfLocator);
         click(configBtnLocator);
