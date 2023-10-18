@@ -1,6 +1,7 @@
 package steps;
 
 import com.github.javafaker.Faker;
+import dto.ObjetiveRecord;
 import injectionDependency.InjectionHome;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -34,7 +35,8 @@ public class StepObjective {
             injectionHome.objetivoPage.goStep("Objetivo");
 
         }
-        injectionHome.objetivoPage.objetivePage(objectiveCode, objectiveDescription);
+        ObjetiveRecord objetiveRecord = new ObjetiveRecord(objectiveCode, objectiveDescription);
+        injectionHome.objetivoPage.objetivePage(objetiveRecord.objectiveCode(), objetiveRecord.objectiveDescription());
 }
 
     @Then("muestra mensaje de operación completada y objetivo en tabla")

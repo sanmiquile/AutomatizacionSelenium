@@ -1,5 +1,7 @@
 package steps;
 
+import com.github.javafaker.Faker;
+import dto.ObjetiveRecord;
 import injectionDependency.InjectionHome;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,6 +20,7 @@ public class StepUpdateObj {
     InjectionHome injectionHome;
     WebDriver driver = Hook.getDriver();
     //ObjetivoPage objetivoPage;
+    Faker faker= new Faker();
     String codigoObjetivo;
     String nuevoCod;
     String nuevaDesc;
@@ -29,10 +32,12 @@ public class StepUpdateObj {
         if (!injectionHome.objetivoPage.getTitleApp().contains("Objetivo")) {
             injectionHome.objetivoPage.goStep("Objetivo");
         }
-        codigoObjetivo = "Stim3";
-        nuevoCod = "Stim2";
-        nuevaDesc = "Description";
-        injectionHome.objetivoPage.actualizarObjetivo(codigoObjetivo, nuevoCod, nuevaDesc);
+        codigoObjetivo = injectionHome.objetivoPage.seleccionarObjetivoAleatorio();
+        nuevoCod = faker.code().asin();
+        nuevaDesc = faker.lorem().sentence();
+        ObjetiveRecord objetiveRecord = new ObjetiveRecord(nuevoCod, nuevaDesc);
+
+        injectionHome.objetivoPage.actualizarObjetivo(codigoObjetivo,objetiveRecord.objectiveCode(), objetiveRecord.objectiveDescription());
     }
         @Then("muestra mensaje de operación completada y objetivo actualizado en tabla")
         public void muestra_mensaje_de_operación_completada_y_objetivo_actualizado_en_tabla() {
