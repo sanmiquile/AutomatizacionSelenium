@@ -1,5 +1,8 @@
 package steps;
 
+import dto.SignInRecord;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeDriver;
 import page.HomeBasePage;
 import page.SingInPage;
 import io.cucumber.java.en.Given;
@@ -10,25 +13,26 @@ import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepLogin {
-    WebDriver driver = null;
-    String username = "sami";
-    String password = "1234";
-
+    WebDriver driver = Hook.getDriver();
+    String username ;
+    String password ;
     SingInPage singInPage;
-
 
     @Given("soy un usuario que ya está registrado")
     public void soy_un_usuario_que_ya_está_registrado() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        username = Hook.getUsername();
+        password = Hook.getPassword();
+
     }
         @When("accedo con mis credenciales de logueo")
         public void accedo_con_mis_credenciales_de_logueo () {
             singInPage = new SingInPage(driver);
-            singInPage.sigIn(username, password);
+            SignInRecord signInRecord = new SignInRecord(username, password);
+            singInPage.sigIn(signInRecord.name(), signInRecord.password());
+
         }
-        @Then("debería estar en el Home")
-        public void debería_estar_en_el_home () throws InterruptedException {
+        @Then("debo estar en el Home")
+        public void debo_estar_en_el_home () throws InterruptedException {
             HomeBasePage homeBasePage = new HomeBasePage(driver);
             assertTrue(homeBasePage.isHomePageDisplayed(), "No inició sesión correctamente");
         }
