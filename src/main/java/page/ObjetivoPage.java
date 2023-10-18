@@ -113,15 +113,10 @@ public class ObjetivoPage extends HomeBasePage {
 
     }
 
-    // Eliminar ui-button-icon-left ui-icon ui-c pi pi-trash
-    // Modal Eliminar Div class ui-confirm-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container
-    // span class ui-confirm-dialog-message 'Está seguro de eliminar este registro'
-    // NO <span class="ui-button-text ui-c">No</span>
-    // SI <span class="ui-button-text ui-c">Si</span>
-    // X <span class="ui-icon ui-icon-closethick"></span>
-
-    // Mensajes fallidos "Ocurrio un error inesperado en el sistema"
-
+    public boolean isDisplayeObjetivePage() {
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(codObjectLocator));
+        return isDisplayed(codObjectLocator);
+        }
 }
 
 
