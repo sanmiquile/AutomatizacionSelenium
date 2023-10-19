@@ -20,6 +20,7 @@ public class ObjetivoPage extends HomeBasePage {
     By eliminarObjetivoLocator = By.xpath("//*[@id='tabla:j_idt602_data']//tr/td[3]/button//span[@class='ui-button-icon-left ui-icon ui-c pi pi-trash']");
     By alertDeleteObjLocator = By.cssSelector(".ui-confirm-dialog");
     By confirmDeleteObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Si']");
+    By cancelDeleteObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='No']");
     public ObjetivoPage(WebDriver driver) {
         super(driver);
     }
@@ -110,6 +111,16 @@ public class ObjetivoPage extends HomeBasePage {
         botonesEliminar.get(pos).click();
         getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(alertDeleteObjLocator));
         click(confirmDeleteObjLocator);
+
+    }
+
+    public void cancelarEliminarObjetivo (String codigoObjetivo){
+        int pos = buscarPosObjetivo(codigoObjetivo);
+        List<WebElement> botonesEliminar = findElements(eliminarObjetivoLocator);
+        //presiona el botón para actualizar los datos
+        botonesEliminar.get(pos).click();
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(alertDeleteObjLocator));
+        click(cancelDeleteObjLocator);
 
     }
 

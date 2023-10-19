@@ -3,6 +3,7 @@ package steps;
 import com.github.javafaker.Faker;
 import dto.ObjetiveRecord;
 import injectionDependency.InjectionHome;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -18,34 +19,30 @@ public class StepUpdateObj {
     }
 
     InjectionHome injectionHome;
-    WebDriver driver = Hook.getDriver();
+
     //ObjetivoPage objetivoPage;
     Faker faker= new Faker();
-    String codigoObjetivo;
-    String nuevoCod;
-    String nuevaDesc;
 
-    @When("busco el objetivo y acualizo su codigo y descripcion")
-    public void busco_el_objetivo_y_acualizo_su_codigo_y_descripcion() throws InterruptedException {
-        injectionHome.objetivoPage = new ObjetivoPage(driver);
-        assertTrue(injectionHome.objetivoPage.isHomePageDisplayed(), "No inició sesión correctamente");
-        if (!injectionHome.objetivoPage.getTitleApp().contains("Objetivo")) {
-            injectionHome.objetivoPage.goStep("Objetivo");
-        }
-        codigoObjetivo = injectionHome.objetivoPage.seleccionarObjetivoAleatorio();
-        nuevoCod = faker.code().asin();
-        nuevaDesc = faker.lorem().sentence();
-        ObjetiveRecord objetiveRecord = new ObjetiveRecord(nuevoCod, nuevaDesc);
+    @When("acualizo su codigo y descripcion")
+    public void acualizo_su_codigo_y_descripcion() throws InterruptedException {
 
-        injectionHome.objetivoPage.actualizarObjetivo(codigoObjetivo,objetiveRecord.objectiveCode(), objetiveRecord.objectiveDescription());
+        injectionHome.objetiveRecord = new ObjetiveRecord(faker.code().asin(),faker.lorem().sentence());
+
     }
-        @Then("muestra mensaje de operación completada y objetivo actualizado en tabla")
+    @And("confirmo la actualización")
+    public void confirmoLaActualización() {
+        injectionHome.objetivoPage.actualizarObjetivo(injectionHome.objetiveCode,injectionHome.objetiveRecord.objectiveCode(),
+                injectionHome.objetiveRecord.objectiveDescription());
+    }
+    @Then("muestra mensaje de operación completada y objetivo actualizado en tabla")
         public void muestra_mensaje_de_operación_completada_y_objetivo_actualizado_en_tabla() {
             String message = injectionHome.objetivoPage.registerMessage();
             injectionHome.objetivoPage.isDisplayeObjetivePage();
             assertEquals("Operación completada", message);
-            assertTrue(injectionHome.objetivoPage.buscarObjetivo(nuevoCod));
+            assertTrue(injectionHome.objetivoPage.buscarObjetivo(injectionHome.objetiveRecord.objectiveCode()));
         }
-    }
+
+
+}
 
 

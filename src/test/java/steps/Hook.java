@@ -1,7 +1,9 @@
 package steps;
 
+import injectionDependency.InjectionStart;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,8 +17,15 @@ public class Hook {
     }
 
     private static WebDriver driver;
+
+
+    private static String allname ="Sandra Milena Quintero Leal";
     private static String username ="sami";
     private static String password ="1234";
+
+    public static String getAllname() {
+        return allname;
+    }
 
     public static String getUsername() {
         return username;
@@ -26,9 +35,21 @@ public class Hook {
         return password;
     }
 
+    public static void setAllname(String allname) {
+        Hook.allname = allname;
+    }
+
+    public static void setUsername(String username) {
+        Hook.username = username;
+    }
+
+    public static void setPassword(String password) {
+        Hook.password = password;
+    }
 
     @Before
     public void setUpDriver() {
+
         driver = chromeDriverConnection();
         //Se usa para el tiempo de espera predeterminado en todo el programa
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -46,6 +67,7 @@ public class Hook {
     @After
     public void tearDown(){
         driver.quit();
+
     }
 
 }

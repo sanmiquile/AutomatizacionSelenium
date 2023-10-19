@@ -22,21 +22,13 @@ public class StepObjective {
 
    //ObjetivoPage objetivoPage;
     Faker faker= new Faker();
-    String objectiveCode;
-    String objectiveDescription ;
 
     @When("ingreso los datos del codigo y descripcion y creo el objetivo")
     public void ingreso_los_datos_del_codigo_y_descripcion_y_creo_el_objetivo() throws InterruptedException {
-        objectiveCode = faker.code().asin();
-        objectiveDescription = faker.lorem().sentence();
+        injectionHome.objetiveRecord = new ObjetiveRecord(faker.code().asin(), faker.lorem().sentence());
         injectionHome.objetivoPage = new ObjetivoPage(driver);
-        assertTrue(injectionHome.objetivoPage.isHomePageDisplayed(),"No inició sesión correctamente");
-        if(!injectionHome.objetivoPage.getTitleApp().contains("Objetivo")) {
-            injectionHome.objetivoPage.goStep("Objetivo");
-
-        }
-        ObjetiveRecord objetiveRecord = new ObjetiveRecord(objectiveCode, objectiveDescription);
-        injectionHome.objetivoPage.objetivePage(objetiveRecord.objectiveCode(), objetiveRecord.objectiveDescription());
+        injectionHome.objetivoPage.objetivePage(injectionHome.objetiveRecord.objectiveCode(),
+                injectionHome.objetiveRecord.objectiveDescription());
 }
 
     @Then("muestra mensaje de operación completada y objetivo en tabla")
@@ -44,9 +36,13 @@ public class StepObjective {
         String message = injectionHome.objetivoPage.registerMessage();
         assertEquals(  "Operación completada", message);
         assertTrue(injectionHome.objetivoPage.isDisplayeObjetivePage());
-        assertTrue(injectionHome.objetivoPage.buscarObjetivo(objectiveCode));
+        assertTrue(injectionHome.objetivoPage.buscarObjetivo(injectionHome.objetiveRecord.objectiveCode()));
     }
 
 
-
+    @When("busco el objetivo")
+    public void buscoElObjetivo() {
+        injectionHome.objetivoPage = new ObjetivoPage(driver);
+        injectionHome.objetiveCode = injectionHome.objetivoPage.seleccionarObjetivoAleatorio();
+    }
 }

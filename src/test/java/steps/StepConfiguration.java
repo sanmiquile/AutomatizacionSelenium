@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepConfiguration {
     public StepConfiguration(InjectionHome injectionHome) {
+
         this.injectionHome = injectionHome;
     }
 
@@ -21,20 +22,13 @@ public class StepConfiguration {
     WebDriver driver = Hook.getDriver();
     //ConfigurarSMSPage configurarSMSPage;
         Faker faker= new Faker();
-        String nameProject ;
-        String descProject ;
+
     @When("creo el codigo y descripcion del proyecto")
     public void creo_el_codigo_y_descripcion_del_proyecto() throws InterruptedException {
-        nameProject = faker.app().name();
-        descProject = faker.lorem().sentence();
+        injectionHome.configureRecord = new ConfigureRecord(faker.app().name(),faker.lorem().sentence());
         injectionHome.configurarSMSPage = new ConfigurarSMSPage(driver);
-        assertTrue(injectionHome.configurarSMSPage.isHomePageDisplayed(), "No inició sesión correctamente");
-        if(!injectionHome.configurarSMSPage.getTitleApp().contains("Configurar SMS")) {
-            injectionHome.configurarSMSPage.goStep("Configurar SMS");
-
-        }
-        ConfigureRecord configureRecord = new ConfigureRecord(nameProject, descProject);
-        injectionHome.configurarSMSPage.configurarsms(configureRecord.nameProject(), configureRecord.descProject());
+        injectionHome.configurarSMSPage.configurarsms(injectionHome.configureRecord.nameProject(),
+                injectionHome.configureRecord.descProject());
 
     }
     @Then("debo pasar a la página de Objetivos")

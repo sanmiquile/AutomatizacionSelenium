@@ -6,3 +6,8 @@ Feature: Inicio de sesión
     When accedo con mis credenciales de logueo
     Then debo estar en el Home
 
+  Scenario: Inicio de sesión fallido
+    Given soy un usuario que no está registrado
+    When accedo con credenciales invalidas
+    Then muestra mensaje de fallo
+
