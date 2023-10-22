@@ -21,6 +21,11 @@ public class ObjetivoPage extends HomeBasePage {
     By alertDeleteObjLocator = By.cssSelector(".ui-confirm-dialog");
     By confirmDeleteObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Si']");
     By cancelDeleteObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='No']");
+
+    public ObjetivoPage() {
+        super();
+    }
+
     public ObjetivoPage(WebDriver driver) {
         super(driver);
     }
@@ -90,7 +95,6 @@ public class ObjetivoPage extends HomeBasePage {
         type(newDescription, newDescriptionLocator);
         click(actualizarBtnLocator);
     }
-
     public void actualizarCancelObjetivo (String codigoObjetivo, String newCod, String newDescription){
 
         int pos = buscarPosObjetivo(codigoObjetivo);

@@ -5,12 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SingInPage extends BasePage {
-
     By userLocator = By.name("nombreUsuario");
     By passLocator = By.id("clave");
     By signInBtnLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Ingresar']");
     //div[@class='ui-growl-message']/span[@class='ui-growl-title']"
     By message = By.xpath("//div[@id='content']/span[contains(text(),'No tiene permiso para acceder a este recurso')]");
+
+    public SingInPage(){
+        super();
+    }
+
     public SingInPage(WebDriver driver) {
         super(driver);
     }
