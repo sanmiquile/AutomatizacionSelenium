@@ -3,6 +3,7 @@ package testsms;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import util.DriverManager;
 
 import java.time.Duration;
 
@@ -25,6 +26,7 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("http://189.50.209.188");
         driver.manage().window().maximize();
+        DriverManager.INSTANCE.setDriver(driver);
     }
 
 

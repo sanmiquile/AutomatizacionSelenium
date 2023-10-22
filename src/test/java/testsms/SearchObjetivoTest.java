@@ -26,7 +26,7 @@ public class SearchObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Treeflex";
+        String codigoObjetivo= objetivoPage.seleccionarObjetivoAleatorio();
         assertTrue(objetivoPage.buscarObjetivo(codigoObjetivo));
 
     }

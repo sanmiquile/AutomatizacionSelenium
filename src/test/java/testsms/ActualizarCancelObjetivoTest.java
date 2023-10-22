@@ -28,7 +28,7 @@ public class ActualizarCancelObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "New";
+        String codigoObjetivo= objetivoPage.seleccionarObjetivoAleatorio();
         String nuevoCod = "New2";
         String nuevaDesc = "Description";
         objetivoPage.actualizarCancelObjetivo(codigoObjetivo, nuevoCod, nuevaDesc);

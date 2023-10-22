@@ -1,12 +1,11 @@
 package testsms;
 
-import dto.RegisterRecord;
 import dto.SignInRecord;
-import page.HomeBasePage;
-import page.SingInPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import page.HomeBasePage;
+import page.SingInPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

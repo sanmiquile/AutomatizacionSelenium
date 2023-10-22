@@ -27,7 +27,7 @@ public class EliminarObjetivoTest extends TestHomeBase{
     }
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "New";
+        String codigoObjetivo= objetivoPage.seleccionarObjetivoAleatorio();
         objetivoPage.eliminarObjetivo(codigoObjetivo);
         String message = objetivoPage.registerMessage();
         assertEquals(  "Operación completada", message);
