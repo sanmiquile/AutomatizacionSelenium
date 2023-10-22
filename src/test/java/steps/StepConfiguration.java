@@ -2,41 +2,37 @@ package steps;
 
 import com.github.javafaker.Faker;
 import dto.ConfigureRecord;
-import dto.RegisterRecord;
 import injectionDependency.InjectionHome;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import page.ConfigurarSMSPage;
-import page.ObjetivoPage;
+import net.serenitybdd.annotations.Shared;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepConfiguration {
-    public StepConfiguration(InjectionHome injectionHome) {
 
-        this.injectionHome = injectionHome;
-    }
 
+    @Shared
     InjectionHome injectionHome;
-    WebDriver driver = Hook.getDriver();
     //ConfigurarSMSPage configurarSMSPage;
-        Faker faker= new Faker();
+    Faker faker = new Faker();
 
     @When("creo el codigo y descripcion del proyecto")
     public void creo_el_codigo_y_descripcion_del_proyecto() throws InterruptedException {
-        injectionHome.configureRecord = new ConfigureRecord(faker.app().name(),faker.lorem().sentence());
-        injectionHome.configurarSMSPage = new ConfigurarSMSPage(driver);
+        injectionHome.configureRecord = new ConfigureRecord(faker.app().name(), faker.lorem().sentence());
+//        injectionHome.configurarSMSPage = new ConfigurarSMSPage();
         injectionHome.configurarSMSPage.configurarsms(injectionHome.configureRecord.nameProject(),
                 injectionHome.configureRecord.descProject());
 
     }
-    @Then("debo pasar a la página de Objetivos")
-    public void debo_pasar_a_la_página_de_objetivos() {
 
-        ObjetivoPage objetivoPage = new ObjetivoPage(driver);
-        assertTrue(objetivoPage.isDisplayeObjetivePage());
-        assertTrue(objetivoPage.getTitleApp().contains("Objetivo"));
+    @Then("debo pasar a la página de Objetivos")
+    public void debo_pasar_a_la_pagina_de_objetivos() {
+
+//        ObjetivoPage objetivoPage = new ObjetivoPage();
+
+        assertTrue(injectionHome.objetivoPage.isDisplayeObjetivePage());
+        assertTrue(injectionHome.objetivoPage.getTitleApp().contains("Objetivo"));
     }
 
 }

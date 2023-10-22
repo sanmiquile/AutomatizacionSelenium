@@ -1,32 +1,71 @@
 plugins {
     id 'java'
+    id("net.serenity-bdd.serenity-gradle-plugin") version "4.0.15"
+    id 'eclipse'
+    id 'idea'
 }
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '4.0.15'
+    junitVersion = '5.8.2'
+    assertJVersion = '3.24.2'
+    logbackVersion = '1.4.11'
+}
+
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+
 
 dependencies {
     // AQUÍ SE PEGARAN LAS DEPENDENCIAS QUE SE SACAN DEL REPOSITORIO DE MAVEN
-   // testImplementation platform('org.junit:junit-bom:5.9.1')
-   // testImplementation 'org.junit.jupiter:junit-jupiter'
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.13.0'
-// https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.5.3'
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.1'
-    // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    implementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.14.0'
+// https://mvnrepository.com/artifact/com.github.javafaker/javafaker
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
-
     implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.14.0'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
-    implementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.14.0'
-    implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.14.0'
+    //implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.14.0'
+    //    implementation group: 'io.cucumber', name: 'cucumber-guice', version: '7.14.0'
+    implementation("net.serenity-bdd:serenity-core:${serenityCoreVersion}")
+
+
+    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}",
+            //"net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+            //"net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "ch.qos.logback:logback-classic:${logbackVersion}"
+
+
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.10.0'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.10.0'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-suite', version: '1.10.0'
+    //testImplementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: ${serenityCoreVersion}
+    //testImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: ${serenityCoreVersion}
+    //testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.11'
+    //testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+
+
+
 
 
 
@@ -34,4 +73,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
 }
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)

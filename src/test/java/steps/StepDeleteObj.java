@@ -3,15 +3,14 @@ package steps;
 import injectionDependency.InjectionHome;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.annotations.Shared;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StepDeleteObj {
 
-    public StepDeleteObj(InjectionHome injectionHome) {
-        this.injectionHome = injectionHome;
-    }
+    @Shared
     InjectionHome injectionHome;
     @When("lo elimino")
     public void lo_elimino() {
