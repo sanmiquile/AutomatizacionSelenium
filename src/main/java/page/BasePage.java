@@ -32,13 +32,6 @@ public class BasePage {
         ewait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-    // Se crea el constructor de la clase
-//    public BasePage (WebDriver driver){
-//        this.driver = driver;
-//        // Se crea Explicit Wait ejecutando un tiempo dependiendo de la condiciòn que se establezca
-//        ewait = new WebDriverWait(driver, Duration.ofSeconds(5));
-//    }
-
     // Este método crea el envoltorio Wrapper para los comandos de Selenium WebDriver
     public WebElement findElement(By locator){
 

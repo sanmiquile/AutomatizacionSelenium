@@ -95,7 +95,6 @@ public class ObjetivoPage extends HomeBasePage {
         type(newDescription, newDescriptionLocator);
         click(actualizarBtnLocator);
     }
-
     public void actualizarCancelObjetivo (String codigoObjetivo, String newCod, String newDescription){
 
         int pos = buscarPosObjetivo(codigoObjetivo);
