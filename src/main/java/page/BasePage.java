@@ -1,18 +1,18 @@
 package page;
 
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.DriverManager;
 
 import java.time.Duration;
 import java.util.List;
 
 // Esta clase contendrá los elementos bases para el modelo POM, donde se realiza la conexiòn
 // al navegador y se realiza el envoltorio (Wrajpper) donde estarán los comandos de Selenium
-public class BasePage {
+public class BasePage extends PageObject {
 // Se crea la variable de tipo webdriver
     protected WebDriver driver;
 
@@ -23,7 +23,9 @@ public class BasePage {
     private final WebDriverWait ewait ;
 
     public BasePage() {
-        this (DriverManager.INSTANCE.getDriver());
+        super();
+        this.driver = this.getDriver();
+        ewait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public BasePage(WebDriver driver) {
