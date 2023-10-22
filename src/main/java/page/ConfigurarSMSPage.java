@@ -9,6 +9,10 @@ public class ConfigurarSMSPage extends HomeBasePage{
     By descriptionConfLocator = By.name("registro:descripcion");
     By configBtnLocator = By.xpath("//button/span[@class='ui-button-text ui-c' and text()='Aceptar']");
 
+    public ConfigurarSMSPage() {
+        super();
+    }
+
     public ConfigurarSMSPage(WebDriver driver) {
         super(driver);
     }
@@ -18,8 +22,5 @@ public class ConfigurarSMSPage extends HomeBasePage{
         type(nameProject,nameProjectLocator);
         type(descProject, descriptionConfLocator);
         click(configBtnLocator);
-
     }
-
-
 }
