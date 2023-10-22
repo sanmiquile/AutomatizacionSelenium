@@ -14,10 +14,13 @@ public class QuestionPage extends HomeBasePage{
     By messageRegisterQ = By.xpath("//div[@class='ui-growl-message']/span[@class='ui-growl-title']");
 
 
+    public QuestionPage() {
+        super();
+    }
+
     public QuestionPage(WebDriver driver) {
         super(driver);
     }
-
     public void questionPage(String codigoQ, String question) throws InterruptedException{
         type(codigoQ, codQuestionLocator);
         type(question, questionLocator);

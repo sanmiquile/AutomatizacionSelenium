@@ -1,10 +1,11 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.DriverManager;
 
 import java.time.Duration;
 import java.util.List;
@@ -19,14 +20,24 @@ public class BasePage {
         return ewait;
     }
 
-    private WebDriverWait ewait ;
+    private final WebDriverWait ewait ;
 
-    // Se crea el constructor de la clase
-    public BasePage (WebDriver driver){
+    public BasePage() {
+        this (DriverManager.INSTANCE.getDriver());
+    }
+
+    public BasePage(WebDriver driver) {
+        super();
         this.driver = driver;
-        // Se crea Explicit Wait ejecutando un tiempo dependiendo de la condiciòn que se establezca
         ewait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
+
+    // Se crea el constructor de la clase
+//    public BasePage (WebDriver driver){
+//        this.driver = driver;
+//        // Se crea Explicit Wait ejecutando un tiempo dependiendo de la condiciòn que se establezca
+//        ewait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//    }
 
     // Este método crea el envoltorio Wrapper para los comandos de Selenium WebDriver
     public WebElement findElement(By locator){
